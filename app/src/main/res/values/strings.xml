@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ViewModelDemo</string>
+    <string name="frontpageText">MainFragment Smyth kap 39 8104/22642</string>
+    <string name="convertButtonText">Convert</string>
 </resources>
