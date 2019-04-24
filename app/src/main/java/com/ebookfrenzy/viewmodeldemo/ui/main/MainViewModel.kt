@@ -8,20 +8,18 @@ class MainViewModel : ViewModel() {
     // old: TODO: Implement the ViewModel
 
     private val usd_to_eu_rate = 0.74f
-    private var dollarText = ""
+    var dollarValue: MutableLiveData<String> = MutableLiveData()
     //private var result: Float = 0f
-    private var result: MutableLiveData<Float> = MutableLiveData()
+    var result: MutableLiveData<Float> = MutableLiveData()
 
-    fun setAmount(value: String) {
-        this.dollarText = value
-        //result = value.toFloat() * usd_to_eu_rate
-        result.value = value.toFloat() * usd_to_eu_rate
+    fun convertValue(){
+        dollarValue.let{
+            if(!it.value.equals("")){
+                result.value = it.value?.toFloat()?.times(usd_to_eu_rate)
+            }else {
+                result.value = 0f
+            }
+        }
     }
 
-    //fun getResult(): Float? {
-    //    return result
-    //}
-    fun getResult(): MutableLiveData<Float> {
-        return result
-    }
 }
