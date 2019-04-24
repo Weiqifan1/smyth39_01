@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.ebookfrenzy.viewmodeldemo.R
 import kotlinx.android.synthetic.main.main_fragment.*
+import android.arch.lifecycle.Observer
+
 
 class MainFragment : Fragment() {
 
@@ -28,12 +30,15 @@ class MainFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
         // TODO: Use the ViewModel
-        resultText.text = viewModel.getResult().toString()
-        //8200/22642 - tilføj kode til at bruge onCreate i et fragment
+        //8344/22642 - tilføj kode til at bruge observer
+        val resultObserver = Observer<Float>{
+            result -> resultText.text = result.toString()
+        }
+        viewModel.getResult().observe(this, resultObserver)
         convertButton.setOnClickListener{
             if(dollarText.text.isNotEmpty()){
                 viewModel.setAmount(dollarText.text.toString())
-                resultText.text = viewModel.getResult().toString()
+                //resultText.text = viewModel.getResult().toString()
             } else {
                 resultText.text = "No value"
             }
