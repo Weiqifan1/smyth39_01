@@ -10,7 +10,6 @@ import com.ebookfrenzy.viewmodeldemo.R
 import android.databinding.DataBindingUtil
 import com.ebookfrenzy.viewmodeldemo.databinding.MainFragmentBinding
 import com.ebookfrenzy.viewmodeldemo.BR.myViewModel
-//ovenstående fejlede her: 8828/22642 - kap. 42
 
 class MainFragment : Fragment() {
 
